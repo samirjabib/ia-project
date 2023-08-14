@@ -27,6 +27,8 @@ import {
   Label,
 } from "@/design-system";
 import { LoginSchemaValues, loginSchema } from "./validators/auth";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -38,6 +40,8 @@ export default function SignUp() {
       password: "",
     },
   });
+
+  const router = useRouter();
 
   const supabase = createClientComponentClient();
 
@@ -51,10 +55,9 @@ export default function SignUp() {
     console.log(res.data.user);
 
     if (res?.data.user) {
-      console.log("run refresh");
+      setIsSubmitting(false);
+      router.push("/dashboard");
     }
-
-    setIsSubmitting(false);
   };
   return (
     <div className="flex items-center justify-center h-screen">
@@ -108,15 +111,23 @@ export default function SignUp() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting && (
-                  <Loader2
-                    className="mr-2 h-4 w-4 animate-spin"
-                    aria-hidden="true"
-                  />
-                )}
-                <>Registrarse</>
-              </Button>
+              <div className="flex flex-col">
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting && (
+                    <Loader2
+                      className="mr-2 h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <>Submit</>
+                </Button>
+                <div className="text-sm">
+                  Dont have account?
+                  <Link href="/sign-in">
+                    <Button variant={"link"}>Register</Button>
+                  </Link>
+                </div>
+              </div>
             </form>
           </Form>
         </CardContent>

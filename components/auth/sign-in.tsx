@@ -26,7 +26,10 @@ import {
   // Icons,
   Label,
 } from "@/design-system";
+
 import { RegisterUserValues, registerUserSchema } from "./validators/auth";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -42,6 +45,7 @@ export default function Register() {
 
   const supabase = createClientComponentClient();
 
+
   const onSubmit = async (data: RegisterUserValues) => {
     try {
       setIsSubmitting(true);
@@ -51,7 +55,7 @@ export default function Register() {
         options: {
           emailRedirectTo: `${location.origin}/api/auth/callback`,
           data: {
-            role: "producer",
+            role: "client",
           },
         },
       });
@@ -61,6 +65,7 @@ export default function Register() {
         setIsSuccess(true);
       }
       setIsSubmitting(false);
+
     } catch (error) {
       console.log(error);
     }
@@ -118,18 +123,26 @@ export default function Register() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting && (
-                  <Loader2
-                    className="mr-2 h-4 w-4 animate-spin"
-                    aria-hidden="true"
-                  />
-                )}
-                <>Registrarse</>
-              </Button>
+              <div className="flex flex-col">
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting && (
+                    <Loader2
+                      className="mr-2 h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <>Registrarse</>
+                </Button>
+                <div className="text-sm">
+                  have account already?{" "}
+                  <Link href="/sign-up">
+                    <Button variant={"link"}>Login</Button>
+                  </Link>
+                </div>
+              </div>
 
               {isSuccess && (
-                <p className="mt-7">
+                <p className="mt-7 max-w-lg">
                   Enviamos un correo de verificación, revisa la bandeja de spam
                   en caso de que no lo veas.
                 </p>
