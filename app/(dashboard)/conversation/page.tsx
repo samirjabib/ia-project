@@ -1,3 +1,9 @@
+import ConversationPage from "@/components/conversation/conversation-page";
+
 export default async function Conversation() {
-  return <div>ConversationPage</div>;
+  return (
+    <>
+      <ConversationPage />
+    </>
+  );
 }
