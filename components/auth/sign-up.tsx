@@ -26,14 +26,13 @@ import {
   // Icons,
   Label,
 } from "@/design-system";
-import { RegisterUserValues, registerUserSchema } from "./validators/auth";
+import { LoginSchemaValues, loginSchema } from "./validators/auth";
 
-export default function Register() {
+export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const form = useForm<RegisterUserValues>({
-    resolver: zodResolver(registerUserSchema),
+  const form = useForm<LoginSchemaValues>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -42,37 +41,28 @@ export default function Register() {
 
   const supabase = createClientComponentClient();
 
-  const onSubmit = async (data: RegisterUserValues) => {
-    try {
-      setIsSubmitting(true);
-      const res = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          emailRedirectTo: `${location.origin}/api/auth/callback`,
-          data: {
-            role: "producer",
-          },
-        },
-      });
-      setIsSubmitting(false);
+  const onSubmit = async (data: LoginSchemaValues) => {
+    setIsSubmitting(true);
+    const res = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
 
-      if (!res.error) {
-        setIsSuccess(true);
-      }
-      setIsSubmitting(false);
-    } catch (error) {
-      console.log(error);
+    console.log(res.data.user);
+
+    if (res?.data.user) {
+      console.log("run refresh");
     }
-  };
 
+    setIsSubmitting(false);
+  };
   return (
     <div className="flex items-center justify-center h-screen">
       <Card className="max-w-2xl">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Create an account</CardTitle>
+          <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to create your account
+            Enter email and password for login to the platform
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
@@ -127,13 +117,6 @@ export default function Register() {
                 )}
                 <>Registrarse</>
               </Button>
-
-              {isSuccess && (
-                <p className="mt-7">
-                  Enviamos un correo de verificación, revisa la bandeja de spam
-                  en caso de que no lo veas.
-                </p>
-              )}
             </form>
           </Form>
         </CardContent>

@@ -7,6 +7,7 @@
 //   ChevronDown,
 //   ChevronLeft,
 //   ChevronRight,
+//   Heart,
 //   ChevronsLeft,
 //   ChevronsRight,
 //   ChevronsUpDown,
@@ -51,7 +52,10 @@
 //   VolumeX,
 //   Wallet,
 //   X,
-//   Github,
+//   Play,
+//   PlusIcon,
+//   Home,
+//   ListMusic,
 //   type Icon as LucideIcon,
 //   type LucideProps,
 // } from "lucide-react";
@@ -111,7 +115,11 @@
 //   chart: BarChart3,
 //   upload: UploadCloud,
 //   placeholder: Image,
-//   github: Github,
+//   home: Home,
+//   listMusic: ListMusic,
+//   play: Play,
+//   heart: Heart,
+//   plus: PlusIcon,
 //   google: ({ ...props }: LucideProps) => (
 //     <svg
 //       aria-hidden="true"

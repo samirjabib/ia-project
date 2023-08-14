@@ -16,7 +16,6 @@ export const registerUserSchema = z.object({
 
 export type RegisterUserValues = z.infer<typeof registerUserSchema>;
 
-//register schema model
 export const loginSchema = z.object({
   email: z.string().email({
     message: "Ingresa un email válido por favor",
@@ -31,3 +30,5 @@ export const loginSchema = z.object({
 });
 
 export type LoginSchemaValues = z.infer<typeof loginSchema>;
+
+
