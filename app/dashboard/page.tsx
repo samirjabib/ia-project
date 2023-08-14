@@ -10,7 +10,7 @@ export default async function Page() {
   } = await supabase.auth.getUser();
 
   if (user?.id && user?.user_metadata.role == "client") {
-    redirect("/dashboard/conversation");
+    redirect("/dashboard/main");
   } else {
     redirect("/");
   }
