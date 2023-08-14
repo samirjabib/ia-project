@@ -18,13 +18,15 @@ export default async function Layout({
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user);
+  const access = user?.id && user?.user_metadata.role !== "client";
 
-  if (user?.id && user?.user_metadata.role !== "client") {
-    redirect("/dashboard");
-  } else {
-    redirect("/");
-  }
+  console.log(access);
+
+  //   if (access) {
+  //     redirect("/dashboard");
+  //   } else {
+  //     redirect("/");
+  //   }
 
   return (
     <div className="h-full relative">
