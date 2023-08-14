@@ -1,17 +1,15 @@
 "use client";
+import { tools } from "@/helpers/constants";
+import { Card } from "@/design-system";
+import { cn } from "@/lib/utils";
 
 import { ArrowRight } from "lucide-react/dist/esm/lucide-react";
 import { useRouter } from "next/navigation";
 
-import { Card } from "@/design-system";
-import { cn } from "@/lib/utils";
-import { tools } from "@/app/dashboard/constants";
-
-export default function HomePage() {
+export default function DashboardPage() {
   const router = useRouter();
-
   return (
-    <div>
+    <>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
           Explore the power of AI
@@ -37,6 +35,6 @@ export default function HomePage() {
           </Card>
         ))}
       </div>
-    </div>
+    </>
   );
 }
