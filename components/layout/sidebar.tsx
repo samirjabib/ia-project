@@ -3,66 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
-import {
-  Code,
-  ImageIcon,
-  LayoutDashboard,
-  MessageSquare,
-  Music,
-  Settings,
-  VideoIcon,
-} from "lucide-react/dist/esm/lucide-react";
 
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Title } from "@/design-system";
+import { routes } from "./helpers";
 
 const poppins = Montserrat({ weight: "600", subsets: ["latin"] });
-
-const routes = [
-  {
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    href: "/dashboard",
-    color: "text-foreground/60",
-  },
-  {
-    label: "Conversation",
-    icon: MessageSquare,
-    href: "/conversation",
-    color: "text-foreground/60",
-  },
-  {
-    label: "Picture Generation",
-    icon: ImageIcon,
-    color: "text-foreground/60",
-    href: "/picture",
-  },
-  {
-    label: "Video Generation",
-    icon: VideoIcon,
-    color: "text-foreground/60",
-    href: "/video",
-  },
-  {
-    label: "Music Generation",
-    icon: Music,
-    color: "text-foreground/60",
-    href: "/music",
-  },
-  {
-    label: "Code Generation",
-    icon: Code,
-    color: "text-foreground/60",
-    href: "/code",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/settings",
-  },
-];
 
 export const Sidebar = ({}: {}) => {
   const pathname = usePathname();
