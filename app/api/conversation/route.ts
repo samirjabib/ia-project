@@ -16,8 +16,6 @@ export async function POST(req: Request) {
       data: { user },
     } = await supabase.auth.getUser();
 
-    console.log(user);
-
     //get the from request
     const body = await req.json();
     const { messages } = body;

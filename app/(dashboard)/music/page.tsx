@@ -1,3 +1,9 @@
+import MusicPage from "@/components/music/music-page";
+
 export default async function Conversation() {
-  return <div>music page</div>;
+  return (
+    <div>
+      <MusicPage />
+    </div>
+  );
 }
