@@ -12,14 +12,14 @@ export const tools = [
   {
     label: "Conversation",
     icon: MessageSquare,
-    href: "/conversation",
+    href: "/dashboard/conversation",
     color: "text-foreground/60",
     bgColor: "",
   },
   {
     label: "Music Generation",
     icon: Music,
-    href: "/music",
+    href: "/dashboard/music",
     color: "text-foreground/60",
     bgColor: "",
   },
@@ -28,7 +28,7 @@ export const tools = [
     icon: ImageIcon,
     color: "text-foreground/60",
     bgColor: "",
-    href: "/image",
+    href: "/dashboard/image",
   },
   {
     label: "Video Generation",
@@ -42,6 +42,6 @@ export const tools = [
     icon: Code,
     color: "text-foreground/60",
     bgColor: "",
-    href: "/code",
+    href: "/dashboard/code",
   },
 ];

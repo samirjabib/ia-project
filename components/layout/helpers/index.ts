@@ -12,37 +12,37 @@ export const routes = [
   {
     label: "Dashboard",
     icon: LayoutDashboard,
-    href: "/dashboard",
+    href: "/dashboard/tools",
     color: "text-foreground/60",
   },
   {
     label: "Conversation",
     icon: MessageSquare,
-    href: "/conversation",
+    href: "/dashboard/conversation",
     color: "text-foreground/60",
   },
   {
     label: "Picture Generation",
     icon: ImageIcon,
     color: "text-foreground/60",
-    href: "/picture",
+    href: "/dashboard/picture",
   },
   {
     label: "Video Generation",
     icon: VideoIcon,
     color: "text-foreground/60",
-    href: "/video",
+    href: "/dashboard/video",
   },
   {
     label: "Music Generation",
     icon: Music,
     color: "text-foreground/60",
-    href: "/music",
+    href: "/dashboard/music",
   },
   {
     label: "Code Generation",
     icon: Code,
     color: "text-foreground/60",
-    href: "/code",
+    href: "/dashboard/code",
   },
 ];

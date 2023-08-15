@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const signOut = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    router.push("/");
   };
 
   return (

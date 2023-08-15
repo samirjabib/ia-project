@@ -56,12 +56,12 @@ export default function SignUp() {
 
     if (res?.data.user) {
       setIsSubmitting(false);
-      router.push("/dashboard");
+      router.push("/dashboard/tools");
     }
   };
   return (
     <div className="flex items-center justify-center h-screen">
-      <Card className="max-w-2xl w-[90%]">
+      <Card className="max-w-lg w-[90%]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
