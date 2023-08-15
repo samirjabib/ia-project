@@ -19,7 +19,6 @@ export default function RootLayout({
     // THIS IS FOR WARNING IN THEME PROVIDER SHADUI
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
-        {/* {children} */}
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
