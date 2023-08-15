@@ -13,20 +13,10 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { conversationSchema } from "./validations/conversation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  Button,
-  FormControl,
-  FormField,
-  FormItem,
-  Input,
-  Form,
-  Loader,
-  Empty,
-  UserAvatar,
-  BotAvatar,
-} from "@/design-system";
 import { Heading } from "../../design-system/elements/heading";
-import { cn } from "@/lib/utils";
+import ConversationForm from "./conversation-form";
+import { ConversationMessages } from "./conversation-messages";
+import ConversationViewState from "./conversation-view-state";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -59,7 +49,7 @@ const ConversationPage = () => {
       });
 
       //pass the new message to state
-      setMessages((current) => [...current, userMessage, response.data]);
+      setMessages((prevState) => [...prevState, userMessage, response.data]);
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) {
@@ -82,76 +72,14 @@ const ConversationPage = () => {
         bgColor=""
       />
       <div className="px-4 lg:px-8">
-        <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
-                focus-within:shadow-sm
-                grid
-                grid-cols-12
-                gap-2
-              "
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        placeholder="How do I calculate the radius of a circle?"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <Button
-                className="col-span-12 lg:col-span-2 w-full"
-                type="submit"
-                disabled={isLoading}
-                size="icon"
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
+        <ConversationForm
+          form={form}
+          onSubmit={onSubmit}
+          isLoading={isLoading}
+        />
         <div className="space-y-4 mt-4">
-          {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
-              <Loader />
-            </div>
-          )}
-          {messages.length === 0 && !isLoading && (
-            <Empty label="No conversation started." />
-          )}
-          <div className="flex flex-col-reverse gap-y-4">
-            {messages.map((message) => (
-              <div
-                key={message.content}
-                className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
-                  message.role === "user"
-                    ? "bg-card border border-black/10"
-                    : "bg-muted"
-                )}
-              >
-                {/* {message.role === "user" ? <UserAvatar /> : <BotAvatar />} */}
-                {message.role === "user" ? <p>User</p> : <>Bot</>}
-
-                <p className="text-sm">{message.content}</p>
-              </div>
-            ))}
-          </div>
+          <ConversationViewState isLoading={isLoading} messages={messages} />
+          <ConversationMessages messages={messages} />
         </div>
       </div>
     </div>
