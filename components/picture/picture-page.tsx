@@ -37,7 +37,8 @@ export default function PicturePage() {
   const onSubmit = async (values: z.infer<typeof pictureSchema>) => {
     try {
       setPictures([]);
-      const response = await axios.post("/api/image", values);
+      const response = await axios.post("/api/picture", values);
+      console.log(response);
       const urls = response.data.map((picture: { url: string }) => picture.url);
       setPictures(urls);
     } catch (error: any) {

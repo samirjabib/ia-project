@@ -16,34 +16,41 @@ export async function POST(req: Request) {
       data: { user },
     } = await supabase.auth.getUser();
 
-    console.log(user);
-
-    //get the from request
+    //get prompt from user
     const body = await req.json();
-    const { messages } = body;
+    const { prompt, amount = 1, resolution = "512x512" } = body;
 
     if (!user?.id) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    //verify the exists of the key
     if (!configuration.apiKey) {
       return new NextResponse("OpenAI API Key not configured.", {
         status: 500,
       });
     }
 
-    if (!messages) {
-      return new NextResponse("Messages are required", { status: 400 });
+    //validations on promps
+    if (!amount) {
+      return new NextResponse("Amount is required", { status: 400 });
     }
 
-    //make the petision to the method of OPEN AI
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages,
+    if (!resolution) {
+      return new NextResponse("Resolution is required", { status: 400 });
+    }
+
+    if (!prompt) {
+      return new NextResponse("Prompt is required", { status: 400 });
+    }
+
+    //get image from OPEN AI
+    const response = await openai.createImage({
+      prompt,
+      n: parseInt(amount, 10),
+      size: resolution,
     });
 
-    return NextResponse.json(response.data.choices[0].message);
+    return NextResponse.json(response.data.data);
   } catch (error) {
     console.log("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
