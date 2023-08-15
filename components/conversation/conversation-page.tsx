@@ -12,6 +12,7 @@ import { ChatCompletionRequestMessage } from "openai";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { conversationSchema } from "./validations/conversation";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
   Button,
   FormControl,
@@ -24,7 +25,7 @@ import {
   UserAvatar,
   BotAvatar,
 } from "@/design-system";
-import { Heading } from "./heading";
+import { Heading } from "../../design-system/elements/heading";
 import { cn } from "@/lib/utils";
 
 const ConversationPage = () => {
@@ -72,13 +73,13 @@ const ConversationPage = () => {
   }
 
   return (
-    <div>
+    <div className="mt-4">
       <Heading
         title="Conversation"
-        description="Our most advanced conversation model."
+        description="Advanced conversation model"
         icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        iconColor="text-primary/60"
+        bgColor=""
       />
       <div className="px-4 lg:px-8">
         <div>
@@ -140,7 +141,7 @@ const ConversationPage = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   message.role === "user"
-                    ? "bg-white border border-black/10"
+                    ? "bg-card border border-black/10"
                     : "bg-muted"
                 )}
               >

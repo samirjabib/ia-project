@@ -10,8 +10,8 @@ export default function DashboardPage() {
   const router = useRouter();
   return (
     <>
-      <div className="mb-8 space-y-4">
-        <h2 className="text-2xl md:text-4xl font-bold text-center">
+      <div className="mb-8 space-y-4 mt-12">
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-primary/80">
           Explore the power of AI
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
@@ -31,7 +31,7 @@ export default function DashboardPage() {
               </div>
               <div className="font-semibold">{tool.label}</div>
             </div>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 text-primary/60" />
           </Card>
         ))}
       </div>

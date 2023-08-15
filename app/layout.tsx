@@ -1,7 +1,7 @@
 import RootProvider from "@/context/root-provider";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 
 const roboto = Roboto_Mono({ subsets: ["latin"] });
 
@@ -16,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // THIS IS FOR WARNING IN THEME PROVIDER SHADUI
+    <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
+        {/* {children} */}
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
