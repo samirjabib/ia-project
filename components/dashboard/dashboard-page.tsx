@@ -3,7 +3,7 @@ import { tools } from "@/helpers/constants";
 import { Card } from "@/design-system";
 import { cn } from "@/lib/utils";
 
-import { ArrowRight } from "lucide-react/dist/esm/lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
