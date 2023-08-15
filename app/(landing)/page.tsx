@@ -1,3 +1,15 @@
-export default async function LandingPage() {
-  return <div>Im the landing page</div>;
+import LandingPage from "@/components/landing-page/landing-page";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+
+export default async function Landing() {
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return (
+    <>
+      <LandingPage user={user} />
+    </>
+  );
 }
