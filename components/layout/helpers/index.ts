@@ -6,7 +6,7 @@ import {
   Music,
   Settings,
   VideoIcon,
-} from "lucide-react/dist/esm/lucide-react";
+} from "lucide-react";
 
 export const routes = [
   {

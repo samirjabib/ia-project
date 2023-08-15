@@ -1,7 +1,6 @@
-import { Icon } from "lucide-react/dist/esm/lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Title } from "@/design-system";
+import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 
 interface HeadingProps {
   title: string;

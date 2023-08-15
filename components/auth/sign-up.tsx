@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
-import { Loader2 } from "lucide-react/dist/esm/lucide-react";
+import { Loader2 } from "lucide-react";
 
 import {
   Button,

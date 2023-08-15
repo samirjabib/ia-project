@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu } from "lucide-react/dist/esm/lucide-react";
+import { Menu } from "lucide-react";
 
 import { Button, Sheet, SheetContent, SheetTrigger } from "@/design-system";
 import { Sidebar } from "./sidebar";

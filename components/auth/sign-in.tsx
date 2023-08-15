@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
-import { Loader2 } from "lucide-react/dist/esm/lucide-react";
+import { Loader2 } from "lucide-react";
 
 import {
   Button,
@@ -23,13 +23,10 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  // Icons,
-  Label,
 } from "@/design-system";
 
 import { RegisterUserValues, registerUserSchema } from "./validators/auth";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

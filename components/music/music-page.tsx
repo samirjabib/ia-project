@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Music } from "lucide-react/dist/esm/lucide-react";
+import { Music } from "lucide-react";
 
 import { useProModal } from "@/hooks/use-pro-modal";
 import { musicSchema } from "./validations/music";

@@ -4,8 +4,8 @@ import * as z from "zod";
 import axios from "axios";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ImageIcon } from "lucide-react/dist/esm/lucide-react";
-import { UseFormReturn, useForm } from "react-hook-form";
+import { ImageIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 

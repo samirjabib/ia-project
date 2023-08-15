@@ -6,7 +6,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { FileAudio } from "lucide-react/dist/esm/lucide-react";
+import { FileAudio } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { useProModal } from "@/hooks/use-pro-modal";
