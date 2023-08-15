@@ -1,4 +1,5 @@
 "use client";
+
 import { Toaster } from "react-hot-toast";
 
 import { FC, useEffect } from "react";

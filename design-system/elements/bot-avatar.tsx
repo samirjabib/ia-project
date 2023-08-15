@@ -1,4 +1,3 @@
-"use client";
 import { Avatar, AvatarImage } from "..";
 
 export const BotAvatar = () => {

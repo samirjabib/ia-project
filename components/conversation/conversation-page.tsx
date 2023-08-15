@@ -9,24 +9,23 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ChatCompletionRequestMessage } from "openai";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { cn } from "@/lib/utils";
 import { useProModal } from "@/hooks/use-pro-modal";
-
-import { Heading } from "@/components/conversation/heading";
+import { conversationSchema } from "./validations/conversation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
-  Empty,
-  Form,
   FormControl,
   FormField,
   FormItem,
   Input,
+  Form,
   Loader,
+  Empty,
   UserAvatar,
+  BotAvatar,
 } from "@/design-system";
-import { BotAvatar } from "@/design-system/elements/bot-avatar";
-import { conversationSchema } from "./validations/conversation";
+import { Heading } from "./heading";
+import { cn } from "@/lib/utils";
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -42,25 +41,24 @@ const ConversationPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = async (values: z.infer<typeof conversationSchema>) => {
+  async function onSubmit(values: z.infer<typeof conversationSchema>) {
     try {
-      //prompt for api
+      //get message from promp user
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt,
       };
 
-      //mantein the state when user ask
+      //mantein the state on chat.
       const newMessages = [...messages, userMessage];
 
-      //get response from de oepn ai
+      //get bot response
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
 
-      //set new response
+      //pass the new message to state
       setMessages((current) => [...current, userMessage, response.data]);
-
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) {
@@ -71,7 +69,7 @@ const ConversationPage = () => {
     } finally {
       router.refresh();
     }
-  };
+  }
 
   return (
     <div>
@@ -146,7 +144,9 @@ const ConversationPage = () => {
                     : "bg-muted"
                 )}
               >
-                {message.role === "user" ? <p>User</p> : <p>Bot</p>}
+                {/* {message.role === "user" ? <UserAvatar /> : <BotAvatar />} */}
+                {message.role === "user" ? <p>User</p> : <>Bot</>}
+
                 <p className="text-sm">{message.content}</p>
               </div>
             ))}

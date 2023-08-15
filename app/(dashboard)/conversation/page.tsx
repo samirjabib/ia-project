@@ -1,6 +1,6 @@
 import ConversationPage from "@/components/conversation/conversation-page";
 
-export default async function Conversation() {
+export default function Conversation() {
   return (
     <>
       <ConversationPage />

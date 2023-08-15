@@ -11,38 +11,36 @@ const openai = new OpenAIApi(configuration);
 
 export async function POST(req: Request) {
   try {
-    // const supabase = createServerComponentClient({ cookies });
-    // const {
-    //   data: { user },
-    // } = await supabase.auth.getUser();
+    const supabase = createServerComponentClient({ cookies });
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    console.log(user);
 
     const body = await req.json();
     const { messages } = body;
 
-    console.log(messages);
+    if (!user?.id) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
 
-    return NextResponse.json(messages);
+    if (!configuration.apiKey) {
+      return new NextResponse("OpenAI API Key not configured.", {
+        status: 500,
+      });
+    }
 
-    // if (!user?.id) {
-    //   return new NextResponse("Unauthorized", { status: 401 });
-    // }
+    if (!messages) {
+      return new NextResponse("Messages are required", { status: 400 });
+    }
 
-    // if (!configuration.apiKey) {
-    //   return new NextResponse("OpenAI API Key not configured.", {
-    //     status: 500,
-    //   });
-    // }
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages,
+    });
 
-    // if (!messages) {
-    //   return new NextResponse("Messages are required", { status: 400 });
-    // }
-
-    // const response = await openai.createChatCompletion({
-    //   model: "gpt-3.5-turbo",
-    //   messages,
-    // });
-
-    // return NextResponse.json(response.data.choices[0].message);
+    return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
     console.log("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });

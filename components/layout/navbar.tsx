@@ -5,10 +5,9 @@ import { MobileSidebar } from "./navbar-mobile";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const Navbar = async () => {
+const Navbar = () => {
   const router = useRouter();
 
-  // Create a Supabase client configured to use cookies
   const supabase = createClientComponentClient();
 
   const signOut = async () => {

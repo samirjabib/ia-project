@@ -1,6 +1,7 @@
 "use client";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Avatar, AvatarFallback, AvatarImage } from "..";
 
 export const UserAvatar = async () => {
   const supabase = createClientComponentClient();
