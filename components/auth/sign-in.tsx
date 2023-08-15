@@ -45,7 +45,6 @@ export default function Register() {
 
   const supabase = createClientComponentClient();
 
-
   const onSubmit = async (data: RegisterUserValues) => {
     try {
       setIsSubmitting(true);
@@ -65,7 +64,6 @@ export default function Register() {
         setIsSuccess(true);
       }
       setIsSubmitting(false);
-
     } catch (error) {
       console.log(error);
     }

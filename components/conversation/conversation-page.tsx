@@ -44,15 +44,21 @@ const ConversationPage = () => {
 
   const onSubmit = async (values: z.infer<typeof conversationSchema>) => {
     try {
+      //prompt for api
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt,
       };
+
+      //mantein the state when user ask
       const newMessages = [...messages, userMessage];
 
+      //get response from de oepn ai
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
+
+      //set new response
       setMessages((current) => [...current, userMessage, response.data]);
 
       form.reset();
@@ -140,7 +146,7 @@ const ConversationPage = () => {
                     : "bg-muted"
                 )}
               >
-                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
+                {message.role === "user" ? <p>User</p> : <p>Bot</p>}
                 <p className="text-sm">{message.content}</p>
               </div>
             ))}
