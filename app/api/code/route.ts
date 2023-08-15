@@ -34,6 +34,8 @@ export async function POST(req: Request) {
       });
     }
 
+    console.log(!configuration.apiKey);
+
     if (!messages) {
       return new NextResponse("Messages are required", { status: 400 });
     }
@@ -42,6 +44,8 @@ export async function POST(req: Request) {
       model: "gpt-3.5-turbo",
       messages: [instructionMessage, ...messages],
     });
+
+    console.log(response.data.choices[0].message);
 
     return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
