@@ -1,9 +1,9 @@
-import SignIn from "@/components/auth/sign-in";
+import Login from "@/components/auth/login";
 
 export default async function Page() {
   return (
     <div>
-      <SignIn />
+      <Login />
     </div>
   );
 }

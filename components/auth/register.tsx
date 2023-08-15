@@ -23,49 +23,56 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  // Icons,
-  Label,
 } from "@/design-system";
-import { LoginSchemaValues, loginSchema } from "./validators/auth";
+
+import { RegisterUserValues, registerUserSchema } from "./validators/auth";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-export default function SignUp() {
+export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const form = useForm<LoginSchemaValues>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<RegisterUserValues>({
+    resolver: zodResolver(registerUserSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const router = useRouter();
-
   const supabase = createClientComponentClient();
 
-  const onSubmit = async (data: LoginSchemaValues) => {
-    setIsSubmitting(true);
-    const res = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
-    });
-
-    console.log(res.data.user);
-
-    if (res?.data.user) {
+  const onSubmit = async (data: RegisterUserValues) => {
+    try {
+      setIsSubmitting(true);
+      const res = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          emailRedirectTo: `${location.origin}/api/auth/callback`,
+          data: {
+            role: "client",
+          },
+        },
+      });
       setIsSubmitting(false);
-      router.push("/dashboard/tools");
+
+      if (!res.error) {
+        setIsSuccess(true);
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      console.log(error);
     }
   };
+
   return (
     <div className="flex items-center justify-center h-screen">
-      <Card className="max-w-lg w-[90%]">
+      <Card className="max-w-lg w-[90%] ">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>
-            Enter email and password for login to the platform
+            Enter your email below to create your account
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
@@ -119,15 +126,22 @@ export default function SignUp() {
                       aria-hidden="true"
                     />
                   )}
-                  <>Submit</>
+                  <>Registrarse</>
                 </Button>
                 <div className="text-sm">
-                  Dont have account?
-                  <Link href="/sign-in">
-                    <Button variant={"link"}>Register</Button>
+                  have account already?{" "}
+                  <Link href="/login">
+                    <Button variant={"link"}>Login</Button>
                   </Link>
                 </div>
               </div>
+
+              {isSuccess && (
+                <p className="mt-7 max-w-lg">
+                  Enviamos un correo de verificación, revisa la bandeja de spam
+                  en caso de que no lo veas.
+                </p>
+              )}
             </form>
           </Form>
         </CardContent>

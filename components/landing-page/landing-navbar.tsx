@@ -23,7 +23,7 @@ export const LandingNavbar = ({ user }: { user: User | null }) => {
       </Link>
       <div className="flex items-center gap-x-2">
         <ThemeDropDown />
-        <Link href={user?.id ? "/dashboard" : "/sign-up"}>
+        <Link href={user?.id ? "/dashboard" : "/login"}>
           <Button variant="outline" className="rounded-full">
             Get Started
           </Button>

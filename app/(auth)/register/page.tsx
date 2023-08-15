@@ -1,9 +1,9 @@
-import SignUp from "@/components/auth/sign-up";
+import Register from "@/components/auth/register";
 
 export default async function Page() {
   return (
     <div>
-      <SignUp />
+      <Register />
     </div>
   );
 }
