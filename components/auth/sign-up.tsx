@@ -61,7 +61,7 @@ export default function SignUp() {
   };
   return (
     <div className="flex items-center justify-center h-screen">
-      <Card className="max-w-2xl">
+      <Card className="max-w-2xl w-[90%]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
