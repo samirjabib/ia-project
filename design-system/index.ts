@@ -16,3 +16,4 @@ export * from "./elements/user-avatar";
 export * from "./elements/user-avatar";
 
 export { default as Title } from "./typografy/title";
+export { default as ThemeDropDown } from "./elements/theme-drop-down";

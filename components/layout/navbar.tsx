@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/design-system";
+import { Button, ThemeDropDown } from "@/design-system";
 import { MobileSidebar } from "./navbar-mobile";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -18,7 +18,8 @@ const Navbar = () => {
   return (
     <div className="flex items-center py-4">
       <MobileSidebar />
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end gap-x-4">
+        <ThemeDropDown />
         <Button variant={"outline"} onClick={signOut}>
           Logout
         </Button>
