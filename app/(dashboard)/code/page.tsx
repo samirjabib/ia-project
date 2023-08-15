@@ -1,3 +1,9 @@
-export default async function Conversation() {
-  return <div>code page</div>;
+import CodePage from "@/components/code/code-page";
+
+export default async function Code() {
+  return (
+    <>
+      <CodePage />
+    </>
+  );
 }

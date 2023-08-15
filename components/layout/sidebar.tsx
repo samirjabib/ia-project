@@ -68,7 +68,7 @@ export const Sidebar = ({}: {}) => {
   const pathname = usePathname();
 
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-secondary text-foreground">
+    <div className="space-y-4 py-4 flex flex-col h-full bg-secondary ">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative h-12 w-12 mr-4">
@@ -89,9 +89,9 @@ export const Sidebar = ({}: {}) => {
               key={route.href}
               href={route.href}
               className={cn(
-                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-foreground hover:bg-foreground/10 rounded-lg transition",
                 pathname === route.href
-                  ? "text-primary/80 bg-white/10"
+                  ? "text-foreground bg-white/10"
                   : "text-foreground/80"
               )}
             >
