@@ -1,7 +1,7 @@
 
 # IA Tools 
 
-A brief description of what this project does and who it's for
+
 
 ![image](https://github.com/samirjabib/ia-project/assets/98964077/bc31cf5a-6f42-4397-92a6-7f638623ad80)
 
