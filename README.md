@@ -1,34 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# IA Tools 
 
-First, run the development server:
+A brief description of what this project does and who it's for
+
+
+## Features
+
+- Tailwind Design and Animations: Utilize Tailwind CSS for styling and animations to create a visually appealing and consistent design.
+
+- Full Responsiveness:Ensure your application is responsive across different screen sizes using Tailwind's responsive design features.
+
+- Supabase Authentication: Implement authentication using Supabase, which provides various login methods including email. Utilize Supabase's authentication functions and components.
+
+
+- Client Form Validation and Handling with zod and react-hook-form:Employ the zod schema validation library along with react-hook-form for robust form validation. Define validation rules using zod schemas and use the zodResolver to integrate with react-hook-form.
+
+
+- Server Error Handling:Implement server error handling using libraries like react-toast to display informative error messages to users.
+
+
+- Image, Video, Conversation, and Music Generation Tools: Integrate OpenAI and Replicate AI APIs to generate images, videos, conversations, and music based on user input.
+
+
+- Page Loading State:Implement loading indicators or skeleton screens to provide visual feedback during content loading.
+
+
+- Routes and API Endpoints:Define your server routes and API endpoints to handle POST, DELETE, and GET requests, using a web framework like Next.js
+
+
+
+
+- Fetching Data in Server React Components:Implement server-side rendering (SSR) using a framework like Next.js to fetch data directly from the database in server-side React components.
+
+
+
+- Handling Relations between Server and Child Components: Pass data between parent and child components using props or state management libraries, following best practices for API communication.
+
+- Reusable Layouts and Folder Structure:  Organize components, pages, styles, and assets in a structured folder hierarchy. Create reusable layout components to maintain consistency.
+
+## Installation
+ 
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/samirjabib/ia-project
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+go inside of project and :
+```bash
+  yarn install 
+  
+```
+    
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run this project, you will need to add the following environment variables to your .env file
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+`NEXT_PUBLIC_SUPABASE_URL`=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`NEXT_PUBLIC_SUPABASE_ANON_KEY`=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`SUPABASE_SERVICE_ROLE_KEY`
+
+`SUPABASE_DB_PASSWORD`=
+
+`OPENAI_API_KEY`=
+
+`REPLICATE_API_TOKEN`=
