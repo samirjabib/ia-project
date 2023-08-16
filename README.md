@@ -1,7 +1,11 @@
 
 # IA Tools 
 
+ia-project.vercel.app (link demo) 
 
+Resume: Image, Video, Conversation, and Music Generation Tools
+
+Ia projec
 
 ![image](https://github.com/samirjabib/ia-project/assets/98964077/bc31cf5a-6f42-4397-92a6-7f638623ad80)
 
