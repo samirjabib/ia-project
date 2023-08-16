@@ -61,8 +61,8 @@ export default function SignUp() {
     }
 
     if (user) {
-      setIsSubmitting(false);
       router.push("/dashboard/tools");
+      setIsSubmitting(false);
     }
   };
 
