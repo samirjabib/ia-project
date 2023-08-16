@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Dasboard Layout",
