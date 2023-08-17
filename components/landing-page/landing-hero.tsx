@@ -29,7 +29,7 @@ export const LandingHero = ({ user }: { user: User | null }) => {
         Create content using AI 10x faster.
       </div>
       <div>
-        <Link href={user?.id ? "/dashboard" : "/sign-up"}>
+        <Link href={user?.id ? "/dashboard/tools" : "/login"}>
           <Button
             variant="default"
             className="md:text-lg p-4 md:p-6 rounded-full font-semibold"
