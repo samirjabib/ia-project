@@ -22,7 +22,7 @@ export const tools = [
     icon: ImageIcon,
     color: "text-foreground/60",
     bgColor: "",
-    href: "/dashboard/image",
+    href: "/dashboard/picture",
   },
   {
     label: "Video Generation",
