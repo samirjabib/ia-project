@@ -1,8 +1,6 @@
 
 # IA Tools ( DON'T ON DEPLOY ONLY FOR SHOW CODE ) 
 
-ia-project.vercel.app (link demo) 
-
 Resume: Image, Video, Conversation, and Music Generation Tools
 
 Ia projec
